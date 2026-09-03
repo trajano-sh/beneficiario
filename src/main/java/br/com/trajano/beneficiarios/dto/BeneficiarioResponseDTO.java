@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public record BeneficiarioResponseDTO(
-        UUID id,
+        Long id,
         String name,
         String phone,
         LocalDate dateOfBirth,

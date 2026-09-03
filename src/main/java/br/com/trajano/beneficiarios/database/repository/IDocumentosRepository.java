@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface IDocumentosRepository extends JpaRepository<Documentos, UUID> {
+public interface IDocumentosRepository extends JpaRepository<Documentos, Long> {
 }

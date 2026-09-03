@@ -12,6 +12,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Entity
 @Table(name = "tb_documentos")
 @Getter
 @Setter
@@ -19,8 +20,8 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Documentos {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    public UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
 
     @Column(nullable = false)
     private String typeDocument;
@@ -36,5 +37,5 @@ public class Documentos {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "beneficiario_id")
-    private Beneficiario recipient;
+    private Beneficiario beneficiario;
 }

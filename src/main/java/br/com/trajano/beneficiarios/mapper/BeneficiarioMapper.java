@@ -2,10 +2,7 @@ package br.com.trajano.beneficiarios.mapper;
 
 import br.com.trajano.beneficiarios.database.model.Beneficiario;
 import br.com.trajano.beneficiarios.database.model.Documentos;
-import br.com.trajano.beneficiarios.dto.BeneficiarioRequestDTO;
-import br.com.trajano.beneficiarios.dto.BeneficiarioResponseDTO;
-import br.com.trajano.beneficiarios.dto.BeneficiariosResponseDTO;
-import br.com.trajano.beneficiarios.dto.DocumentosResponseDTO;
+import br.com.trajano.beneficiarios.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -32,17 +29,10 @@ public class BeneficiarioMapper {
         return bf;
     }
 
-    public Beneficiario toUpdate(Beneficiario beneficiario,BeneficiarioRequestDTO dto){
-        if (dto.name()!=null){
-            beneficiario.setName(dto.name());
-        }
-        if (dto.phone()!=null){
-            beneficiario.setPhone(dto.phone());
-        }
-        if (!dto.documents().isEmpty()){
-            beneficiario.setDocuments(docsMapper.toEntity(dto.documents()));
-        }
+    public void toUpdate(Beneficiario beneficiario, BeneficiarioUpdateRequestDTO dto){
         beneficiario.setName(dto.name());
+        beneficiario.setPhone(dto.phone());
+        beneficiario.setDateOfBirth(dto.dateOfBirth());
     }
 
     public List<BeneficiariosResponseDTO> getAll(List<Beneficiario> beneficiarios) {

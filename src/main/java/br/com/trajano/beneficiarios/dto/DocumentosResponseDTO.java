@@ -4,11 +4,11 @@ import java.time.Instant;
 import java.util.UUID;
 
 public record DocumentosResponseDTO(
-        UUID id,
+        Long id,
         String typeDocument,
         String description,
         Instant createdAt,
         Instant updatedAt,
-        UUID recipientId
+        Long recipientId
 ) {
 }

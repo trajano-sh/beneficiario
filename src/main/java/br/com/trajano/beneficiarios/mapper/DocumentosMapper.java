@@ -21,7 +21,7 @@ public class DocumentosMapper {
                 docs.getDescription(),
                 docs.getCreatedAt(),
                 docs.getUpdatedAt(),
-                docs.getRecipient().getId()
+                docs.getBeneficiario().getId()
         );
     }
 }
