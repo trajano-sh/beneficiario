@@ -7,3 +7,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+    date-format: yyyy-MM-dd
+server:
+  error:
+    include-binding-errors: never
+    include-message: never

@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
-public record RecipientRequestDTO(@NotBlank String name,
-                                  @NotBlank String phone,
-                                  LocalDate dateOfBirth,
-                                  List<DocumentsRequestDTO> documents
-){}
+public record RecipientRequestDTO(@NotBlank String name, @NotBlank String phone, LocalDate dateOfBirth,
+                                  List<DocumentsRequestDTO> documents) {
+}

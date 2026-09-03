@@ -16,7 +16,7 @@ public class RecipientMapper {
         Recipient recipient = new Recipient();
 
         if (dto.documents() != null && !dto.documents().isEmpty()) {
-            docsMapper.toEntity(recipient,dto.documents());
+            docsMapper.toEntity(recipient, dto.documents());
         }
 
         recipient.setName(dto.name());

@@ -6,5 +6,6 @@ import jakarta.validation.constraints.Past;
 
 import java.time.LocalDate;
 
-public record RecipientUpdateRequestDTO(@NotBlank String name, @NotBlank String phone, @NotNull @Past LocalDate dateOfBirth) {
+public record RecipientUpdateRequestDTO(@NotBlank String name, @NotBlank String phone,
+                                        @NotNull @Past LocalDate dateOfBirth) {
 }

@@ -1,7 +1,7 @@
 package br.com.trajano.beneficiarios.controller;
 
 import br.com.trajano.beneficiarios.dto.*;
-import br.com.trajano.beneficiarios.service.BeneficiarioService;
+import br.com.trajano.beneficiarios.service.RecipientService;
 import br.com.trajano.beneficiarios.service.DocumentsService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,22 +15,22 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/recipients")
 public class RecipientController {
-    private final BeneficiarioService beneficiarioService;
+    private final RecipientService recipientService;
     private final DocumentsService documentsService;
 
     @GetMapping
     public ResponseEntity<List<RecipientsResponseDTO>> getAllRecipients() {
-        return ResponseEntity.ok(beneficiarioService.getAllRecipientes());
+        return ResponseEntity.ok(recipientService.getAllRecipients());
     }
 
     @GetMapping("/{recipientId}")
     public ResponseEntity<RecipientResponseDTO> getRecipient(@PathVariable Long recipientId) {
-        return ResponseEntity.ok(beneficiarioService.getRecipient(recipientId));
+        return ResponseEntity.ok(recipientService.getRecipient(recipientId));
     }
 
     @PostMapping
     public ResponseEntity<Void> createRecipient(@RequestBody @Valid RecipientRequestDTO dto) {
-        beneficiarioService.createBeneficiario(dto);
+        recipientService.createRecipient(dto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -42,12 +42,12 @@ public class RecipientController {
 
     @PutMapping("/{recipientId}")
     public ResponseEntity<RecipientResponseDTO> updateRecipient(@PathVariable Long recipientId, @RequestBody RecipientUpdateRequestDTO dto) {
-        return ResponseEntity.ok(beneficiarioService.updatedBeneficario(recipientId, dto));
+        return ResponseEntity.ok(recipientService.updatedRecipient(recipientId, dto));
     }
 
     @DeleteMapping("/{recipientId}")
     public ResponseEntity<Void> deleteRecipient(@PathVariable Long recipientId) {
-        beneficiarioService.deleteBeneficiario(recipientId);
+        recipientService.deleteRecipient(recipientId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
