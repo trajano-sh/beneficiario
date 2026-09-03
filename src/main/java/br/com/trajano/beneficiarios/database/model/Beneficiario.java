@@ -33,6 +33,6 @@ public class Beneficiario {
     private Instant updatedAt;
 
     @OneToMany(mappedBy = "beneficiario", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Object> documents = new ArrayList<>();
+    private List<Documentos> documents = new ArrayList<>();
 
 }
