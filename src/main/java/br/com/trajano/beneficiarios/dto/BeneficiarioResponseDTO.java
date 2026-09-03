@@ -13,6 +13,6 @@ public record BeneficiarioResponseDTO(
         LocalDate dateOfBirth,
         Instant createdAt,
         Instant updatedAt,
-        List<Objects> documents
+        List<DocumentosResponseDTO> documents
 ) {
 }

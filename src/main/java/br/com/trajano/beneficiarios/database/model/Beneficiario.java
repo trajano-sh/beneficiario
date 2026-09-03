@@ -1,6 +1,10 @@
 package br.com.trajano.beneficiarios.database.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
@@ -12,6 +16,10 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "tb_beneficiarios")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Beneficiario {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
