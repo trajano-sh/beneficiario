@@ -46,7 +46,7 @@ public class BeneficiarioService {
     }
 
     @Transactional(readOnly = true)
-    public BeneficiarioResponseDTO getBeneficiario(UUID id){
+    public BeneficiarioResponseDTO getRecipient(UUID id){
         Beneficiario beneficiario = beneficiarioRepository.findById(id).orElseThrow(()->new NotFoundException("Beneficiario nao existe"));
 
         return beneficiarioMapper.toDto(beneficiario);
