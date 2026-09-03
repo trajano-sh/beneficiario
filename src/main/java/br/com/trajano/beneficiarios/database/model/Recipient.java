@@ -6,21 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
-@Table(name = "tb_beneficiarios")
+@Table(name = "tb_recipients")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Beneficiario {
+public class Recipient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,9 +37,10 @@ public class Beneficiario {
     @CreationTimestamp
     private Instant createdAt;
 
+    @UpdateTimestamp
     private Instant updatedAt;
 
-    @OneToMany(mappedBy = "beneficiario", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Documentos> documents = new ArrayList<>();
+    @OneToMany(mappedBy = "recipient", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Documents> documents = new ArrayList<>();
 
 }

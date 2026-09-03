@@ -1,9 +1,8 @@
 package br.com.trajano.beneficiarios.dto;
 
 import java.time.Instant;
-import java.util.UUID;
 
-public record DocumentosResponseDTO(
+public record DocumentsResponseDTO(
         Long id,
         String typeDocument,
         String description,

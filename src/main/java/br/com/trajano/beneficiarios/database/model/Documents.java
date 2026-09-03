@@ -9,16 +9,14 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
-@Table(name = "tb_documentos")
+@Table(name = "tb_documents")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Documentos {
+public class Documents {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
@@ -36,6 +34,6 @@ public class Documentos {
     private Instant updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "beneficiario_id")
-    private Beneficiario beneficiario;
+    @JoinColumn(name = "recipient_id")
+    private Recipient recipient;
 }

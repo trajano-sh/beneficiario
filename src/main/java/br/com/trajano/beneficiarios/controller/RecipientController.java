@@ -1,44 +1,47 @@
 package br.com.trajano.beneficiarios.controller;
 
-import br.com.trajano.beneficiarios.dto.BeneficiarioRequestDTO;
-import br.com.trajano.beneficiarios.dto.BeneficiarioResponseDTO;
-import br.com.trajano.beneficiarios.dto.BeneficiarioUpdateRequestDTO;
-import br.com.trajano.beneficiarios.dto.BeneficiariosResponseDTO;
+import br.com.trajano.beneficiarios.dto.*;
 import br.com.trajano.beneficiarios.service.BeneficiarioService;
+import br.com.trajano.beneficiarios.service.DocumentsService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/beneficiarios")
-public class BeneficiarioController {
+@RequestMapping("/api/v1/recipients")
+public class RecipientController {
     private final BeneficiarioService beneficiarioService;
+    private final DocumentsService documentsService;
 
     @GetMapping
-    public ResponseEntity<List<BeneficiariosResponseDTO>> getAllRecipientes() {
+    public ResponseEntity<List<RecipientsResponseDTO>> getAllRecipients() {
         return ResponseEntity.ok(beneficiarioService.getAllRecipientes());
     }
 
     @GetMapping("/{recipientId}")
-    public ResponseEntity<BeneficiarioResponseDTO> getRecipient(@PathVariable Long recipientId) {
+    public ResponseEntity<RecipientResponseDTO> getRecipient(@PathVariable Long recipientId) {
         return ResponseEntity.ok(beneficiarioService.getRecipient(recipientId));
     }
 
     @PostMapping
-    public ResponseEntity<Void> createRecipient(@RequestBody @Valid BeneficiarioRequestDTO dto) {
+    public ResponseEntity<Void> createRecipient(@RequestBody @Valid RecipientRequestDTO dto) {
         beneficiarioService.createBeneficiario(dto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PostMapping("/{recipientId}/docs")
+    public ResponseEntity<Void> createDocs(@PathVariable Long recipientId, @RequestBody @Valid List<DocumentsRequestDTO> dto) {
+        documentsService.createDocuments(recipientId, dto);
+        return ResponseEntity.noContent().build();
+    }
+
     @PutMapping("/{recipientId}")
-    public ResponseEntity<BeneficiarioResponseDTO> updateRecipient(@PathVariable Long recipientId, @RequestBody BeneficiarioUpdateRequestDTO dto) {
+    public ResponseEntity<RecipientResponseDTO> updateRecipient(@PathVariable Long recipientId, @RequestBody RecipientUpdateRequestDTO dto) {
         return ResponseEntity.ok(beneficiarioService.updatedBeneficario(recipientId, dto));
     }
 
