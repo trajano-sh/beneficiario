@@ -41,7 +41,7 @@ public class RecipientController {
     }
 
     @PutMapping("/{recipientId}")
-    public ResponseEntity<RecipientResponseDTO> updateRecipient(@PathVariable Long recipientId, @RequestBody RecipientUpdateRequestDTO dto) {
+    public ResponseEntity<RecipientResponseDTO> updateRecipient(@PathVariable Long recipientId, @RequestBody @Valid RecipientUpdateRequestDTO dto) {
         return ResponseEntity.ok(recipientService.updatedRecipient(recipientId, dto));
     }
 
